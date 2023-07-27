@@ -30,13 +30,6 @@ Proof.
   reflexivity.
 Qed.
 
-Example if_x_1_else_0_le_1: forall (x: bool), (if x then 0 + 1 else 0) <= 1.
-Proof.
-intros.
-induction x; auto.
-Qed.
-
-
 Example count_vowels_plus_vowel: forall x c, is_vowel c = true -> count_vowels (String (ascii_of_byte c) x) = count_vowels x + 1.
 Proof.
   intros.
