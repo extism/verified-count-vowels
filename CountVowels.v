@@ -41,10 +41,6 @@ Qed.
 Eval compute in count_vowels "abcdefghi".
 
 Require Coq.extraction.Extraction.
-(*Require Import ExtrOcamlBasic.
-Require Import ExtrOcamlString.
-Require Import ExtrOcamlChar.
-Require Import ExtrOcamlNatInt.*)
 Require Import ExtrHaskellBasic.
 Require Import ExtrHaskellString.
 Require Import ExtrHaskellNatInt.
