@@ -4,6 +4,7 @@ import CountVowels
 import Extism.PDK
 import Extism.PDK.JSON
 
+countVowels :: IO ()
 countVowels = do
   -- Get input string from Extism host
   s <- inputString
@@ -12,6 +13,7 @@ countVowels = do
   -- Return a JSON object {"count": count} back to the host
   outputJSON $ object ["count" .= count]
 
+main :: IO ()
 main = countVowels
 
 foreign export ccall "count_vowels" countVowels ::  IO ()
