@@ -1,1 +1,4 @@
 dist-newstyle
+*.vo*
+.lia.cache
+*.aux

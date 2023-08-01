@@ -1,6 +1,7 @@
 Require Import Ascii.
 Require Import Init.Byte.
 Require Import String.
+Require Import Lia.
 
 Open Scope byte_scope.
 
@@ -28,6 +29,7 @@ Close Scope byte_scope.
 
 Open Scope string_scope.
 
+
 (* Count the number of vowels in a string *)
 Fixpoint count_vowels (s: string) : nat :=
   match s with
@@ -50,6 +52,16 @@ Proof.
   reflexivity.
 Qed.
 
+(* Verify that all strings have 0 or more vowels *)
+Theorem count_vowels_always_ge_0: forall s, count_vowels s >= 0.
+Proof.
+  unfold ge.
+  intros.
+  induction s.
+  - reflexivity.
+  - auto with *.
+Qed.
+
 (* Verify that adding a vowel to a string increases the vowel count by 1 *)
 Theorem count_vowels_plus_vowel:
   forall x c, is_vowel c = true -> count_vowels (String (ascii_of_byte c) x) = count_vowels x + 1.
@@ -70,6 +82,19 @@ Proof.
   rewrite byte_of_ascii_of_byte.
   rewrite H.
   reflexivity.
+Qed.
+
+(* Verify that the number of vowels is always less than or equal to the length of the string *)
+Theorem count_vowels_le_len:
+  forall x, count_vowels x <= length x.
+Proof.
+  intros s.
+  induction s.
+  - simpl. lia.
+  - simpl.
+    destruct (is_vowel (byte_of_ascii a)) eqn:Hvowel.
+    + simpl. lia.
+    + simpl. lia.
 Qed.
 
 Require Coq.extraction.Extraction.
