@@ -1,6 +1,6 @@
 build: impl
 	wasm32-wasi-cabal build
-	@cp $(shell find dist-newstyle -name verified-count-vowels.wasm) .
+	@cp `find dist-newstyle -name 'verified-count-vowels.wasm'` .
 
 impl:
 	coqc CountVowels.v
