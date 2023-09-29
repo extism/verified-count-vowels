@@ -7,11 +7,11 @@ import Extism.PDK.JSON
 countVowels :: IO ()
 countVowels = do
   -- Get input string from Extism host
-  s <- inputString
+  s <- input
   -- Calculate the number of vowels
   let count = count_vowels s
   -- Return a JSON object {"count": count} back to the host
-  outputJSON $ object ["count" .= count]
+  output $ (JSONValue $ object ["count" .= count])
 
 main :: IO ()
 main = countVowels
